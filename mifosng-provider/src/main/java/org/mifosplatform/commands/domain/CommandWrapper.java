@@ -495,4 +495,25 @@ public class CommandWrapper {
     public boolean isReportResource() {
         return this.entityName.equalsIgnoreCase("REPORT");
     }
+
+	public boolean isInventoryResource() {
+		return this.entityName.equalsIgnoreCase("INVENTORY");
+	}
+	
+	public boolean isUploadStatusResource() {
+		return this.entityName.equalsIgnoreCase("UPLOADSTATUS");
+	}
+	
+	public boolean isCreateItem() {
+    	return this.actionName.equalsIgnoreCase("CREATE") && this.entityName.equalsIgnoreCase("ITEM");
+	}
+    
+    public boolean isUpdateItem(){
+    	return this.actionName.equalsIgnoreCase("UPDATE") && this.entityName.equalsIgnoreCase("ITEM");
+    }
+    
+    public boolean isDeleteItem(){
+    	return this.actionName.equalsIgnoreCase("DELETE") && this.entityName.equalsIgnoreCase("ITEM");
+    }
+	
 }

@@ -5,6 +5,7 @@
  */
 package org.mifosplatform.infrastructure.codes.domain;
 
+import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
