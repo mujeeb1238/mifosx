@@ -533,4 +533,21 @@ public class DataValidatorBuilder {
         }
         return this;
     }
+  //user defined method :rahman
+    public DataValidatorBuilder validateforNumeric(){
+    	if (value == null && ignoreNullValue) { return this; }
+    	if (value != null) {
+    		String clientVal = value.toString();
+    		if (clientVal.trim().matches("^\\d*$")){
+    			System.out.println("is a integer ");
+    			return this;
+    		}else{
+    			StringBuilder validationErrorCode = new StringBuilder("validation.msg.").append(resource).append(".").append(parameter).append(".value.").append(value).append(".is.not.integer");
+    			StringBuilder defaultEnglishMessage = new StringBuilder("The parameter ").append(parameter).append(" value ").append(value).append(" is not integer.");
+    			ApiParameterError error = ApiParameterError.parameterError(validationErrorCode.toString(), defaultEnglishMessage.toString(),parameter, value,value);
+    			dataValidationErrors.add(error);
+    		}
+    	}
+    	return this;
+    }
 }

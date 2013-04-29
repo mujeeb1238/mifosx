@@ -231,4 +231,9 @@ public class FileUtils {
             logger.warn("Unable to delete image associated with clients with Id " + resourceId);
         }
     }
+    public static String generateXlsFileDirectory() {
+        return FileUtils.MIFOSX_BASE_DIR + File.separator + ThreadLocalContextUtil.getTenant().getName().replaceAll(" ", "").trim()
+                + File.separator + "XlsFile"+ File.separator
+                + FileUtils.generateRandomString();
+    }
 }

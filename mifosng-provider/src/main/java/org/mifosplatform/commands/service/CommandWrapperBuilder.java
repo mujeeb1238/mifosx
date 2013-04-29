@@ -24,6 +24,7 @@ public class CommandWrapperBuilder {
     private String transactionId;
     private String supportedEntityType;
     private Long supportedEntityId;
+    
 
     public CommandWrapper build() {
         return new CommandWrapper(this.officeId, this.groupId, this.clientId, this.loanId, this.savingsId, this.actionName,
@@ -245,7 +246,14 @@ public class CommandWrapperBuilder {
         this.href = "/codes/" + codeId;
         return this;
     }
-
+    public CommandWrapperBuilder updateUploadStatus(final Long statusId) {
+        this.actionName = "UPDATE";
+        this.entityName = "UPLOADSTATUS";
+        this.entityId = statusId;
+        this.href = "/uploadstatus/" + codeId;
+        return this;
+    }
+    
     public CommandWrapperBuilder deleteCode(final Long codeId) {
         this.actionName = "DELETE";
         this.entityName = "CODE";
@@ -932,4 +940,46 @@ public class CommandWrapperBuilder {
         this.href = "/centers/" + centerId + "?command=activate";
         return this;
     }
+
+    /*
+     * This method is added by inventory team for creating and inserting item details into the item_detail table
+     * */
+    public CommandWrapperBuilder createInventoryItem(){
+    	this.actionName = "CREATE";
+    	this.entityName = "INVENTORY";
+    	
+    	this.entityId = null;
+    	this.href = "/itemdetails/template";
+    	return this;
+    }
+     
+     public CommandWrapperBuilder createUploadStatus(){
+     	this.actionName = "CREATE";
+     	this.entityName = "UPLOADSTATUS";
+     	
+     	this.entityId = null;
+     	this.href = "/uploadstatus/template";
+     	return this;
+     }
+     public CommandWrapperBuilder updateItem(final Long itemId) {
+         this.actionName = "UPDATE";
+         this.entityName = "ITEM";
+         this.entityId = itemId;
+         this.href = "/items/" + itemId;
+         return this;
+     }
+     public CommandWrapperBuilder createItem() {
+         this.actionName = "CREATE";
+         this.entityName = "ITEM";
+         this.entityId = null;
+         this.href = "/items/";
+         return this;
+     }
+     public CommandWrapperBuilder deleteItem(final Long itemId) {
+         this.actionName = "DELETE";
+         this.entityName = "ITEM";
+         this.entityId = itemId;
+         this.href = "/item/" + itemId;
+         return this;
+     }
 }

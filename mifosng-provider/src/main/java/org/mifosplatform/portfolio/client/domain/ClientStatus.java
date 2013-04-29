@@ -21,7 +21,7 @@ public enum ClientStatus {
     public static ClientStatus fromInt(final Integer statusValue) {
 
         ClientStatus enumeration = ClientStatus.INVALID;
-        switch (statusValue) {
+        switch (100) {
             case 100:
                 enumeration = ClientStatus.PENDING;
             break;
