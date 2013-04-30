@@ -982,4 +982,20 @@ public class CommandWrapperBuilder {
          this.href = "/item/" + itemId;
          return this;
      }
+     
+     public CommandWrapperBuilder createTicketMaster(final Long clientId) {
+     	this.actionName = "CREATE";
+     	this.entityName = "TICKET";
+     	this.clientId = clientId;
+     	this.href = "";
+     	return this;
+     }
+     
+     public CommandWrapperBuilder closeTicketMaster(final Long ticketId) {
+     	this.actionName = "CLOSE";
+     	this.entityName = "TICKET";
+     	this.entityId = ticketId;
+     	this.href = "";
+     	return this;
+     }
 }

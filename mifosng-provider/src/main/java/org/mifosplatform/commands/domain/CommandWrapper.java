@@ -515,5 +515,19 @@ public class CommandWrapper {
     public boolean isDeleteItem(){
     	return this.actionName.equalsIgnoreCase("DELETE") && this.entityName.equalsIgnoreCase("ITEM");
     }
-	
+ 
+    public boolean isTicketResource() {
+    	return this.entityName.equalsIgnoreCase("TICKET");
+    }
+ 
+    public boolean isCreateTicket() {
+    	return this.actionName.equalsIgnoreCase("Create") && this.entityName.equalsIgnoreCase("TICKET");
+    }
+    
+    public boolean isUpdateTicket() {
+    	return this.actionName.equalsIgnoreCase("UPDATE") && this.entityName.equalsIgnoreCase("TICKET"); 
+    }
+    public boolean isCloseTicket() {
+    	return this.actionName.equalsIgnoreCase("CLOSE") && this.entityName.equalsIgnoreCase("TICKET");
+    } 
 }

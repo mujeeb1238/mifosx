@@ -451,12 +451,20 @@ public class SynchronousCommandProcessingService implements CommandProcessingSer
 		
         } else if (wrapper.isDeleteItem()) {
         	handler = applicationContext.getBean("deleteItemCommandHandler",NewCommandSourceHandler.class);
-        	
-        }else {
-            throw new UnsupportedCommandException(wrapper.commandName());
-        }
-        
-            
-        return handler;
+        } else if(wrapper.isTicketResource()){
+    	if(wrapper.isCreateTicket()) {
+    		handler = applicationContext.getBean("createTicketMasterCommandHandler", NewCommandSourceHandler.class);
+    	} else if (wrapper.isUpdateTicket()) {
+    		handler = applicationContext.getBean("updateTicketMasterCommandHandler", NewCommandSourceHandler.class);
+    	} else if (wrapper.isCloseTicket()) {
+    		handler = applicationContext.getBean("deleteTicketMasterCommandHandler", NewCommandSourceHandler.class);
+    	} else {
+    		throw new UnsupportedCommandException(wrapper.commandName());
+    	}
+    } else {
+        throw new UnsupportedCommandException(wrapper.commandName());
     }
+
+    return handler;
+}
 }
